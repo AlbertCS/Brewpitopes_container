@@ -13,9 +13,6 @@ RUN apt update && apt upgrade -y && \
 # Install R 4.2.1
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Madrid
-#RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | gpg --dearmor -o /usr/share/keyrings/r-project.gpg
-#RUN echo "deb [signed-by=/usr/share/keyrings/r-project.gpg] https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/" | tee -a /etc/apt/sources.list.d/r-project.list
-#RUN apt update
 RUN apt install --no-install-recommends r-base -y
 
 # R libraries
@@ -25,15 +22,7 @@ RUN R -e "install.packages('data.table', dependencies=TRUE)"
 RUN R -e "install.packages('segmented')"
 RUN R -e "install.packages('seqinr')" # repos='http://R-Forge.R-project.org'
 RUN R -e "install.packages('bitops')"
-RUN R -e "install.packages('XML', repos = 'http://www.omegahat.net/R')" # no funciona
-# Warning: unable to access index for repository http://www.omegahat.org/R/src/contrib:
-#  cannot open URL 'http://www.omegahat.org/R/src/contrib/PACKAGES'
-#Warning message:
-#package 'XML' is not available for this version of R
-#A version of this package for your version of R might be available elsewhere,
-#see the ideas at
-#https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
-
+RUN R -e "install.packages('XML', repos = 'http://www.omegahat.net/R')"
 #RUN R -e "install.packages('devtools', dependencies=TRUE)"
 # ERROR: dependencies 'usethis', 'pkgdown', 'rcmdcheck', 'roxygen2', 'rversions', 'urlchecker' are not available for package 'devtools'
 # ERROR: configuration failed for package 'systemfonts'
