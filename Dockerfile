@@ -22,6 +22,7 @@ RUN R -e "install.packages('seqinr')" # repos='http://R-Forge.R-project.org'
 RUN R -e "install.packages('bitops')"
 RUN R -e "install.packages('XML', repos = 'http://www.omegahat.net/R')"
 RUN R -e "install.packages('remotes')"
+RUN R -e "install.packages('argparser')"
 RUN R -e "remotes::install_github('cttobin/ggthemr')"
 
 # Load libraries
@@ -35,11 +36,12 @@ RUN R -e "library(seqinr)"
 RUN R -e "library(XML)"
 RUN R -e "library(ggplot2)"
 RUN R -e "library(ggthemr)"
+RUN R -e "library(argparser)"
 
 # Install dependencies, not needed : csv, sys, os, pathlib
 RUN pip install more-itertools pandas
 
 # Working directory
 WORKDIR /home/Brewpitopes
-#ADD brewpitopes.tar .
-RUN git clone https://github.com/rocfd/brewpitopes
+RUN git clone --branch automated https://github.com/rocfd/brewpitopes.git
+WORKDIR /home/Projects
