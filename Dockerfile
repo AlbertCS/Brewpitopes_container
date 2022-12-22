@@ -48,6 +48,5 @@ RUN R -e "library(argparser)"
 RUN pip install more-itertools pandas
 
 # Working directory
-WORKDIR /home/Brewpitopes
+WORKDIR /home
 RUN git clone --branch dockerized https://github.com/rocfd/brewpitopes.git
-WORKDIR /home/Projects
