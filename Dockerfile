@@ -1,5 +1,11 @@
 # Dockerfile for Brewpitopes
 FROM ubuntu:latest
+LABEL maintainer="Albert Cañellas-Sole <albert.canellas@bsc.es>, Roc Farriol-Duran <roc.farriol@bsc.es>" \
+    container="Brewpitopes" \
+    about.summary="BREWPITOPES: a pipeline to refine B-cell epitope predictions during public health emergencies" \
+    about.home="https://github.com/rocfd/brewpitopes/tree/dockerized" \
+    software.version="1.0"
+
 
 # Update to latest packages and install python=3.7
 RUN apt update && apt upgrade -y && \
@@ -43,5 +49,5 @@ RUN pip install more-itertools pandas
 
 # Working directory
 WORKDIR /home/Brewpitopes
-RUN git clone --branch automated https://github.com/rocfd/brewpitopes.git
+RUN git clone --branch dockerized https://github.com/rocfd/brewpitopes.git
 WORKDIR /home/Projects
