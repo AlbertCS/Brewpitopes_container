@@ -1,11 +1,16 @@
-# Dockerfile for Brewpitopes
+################## BASE IMAGE ######################
+
 FROM ubuntu:latest
+
+################## METADATA ######################
+
 LABEL maintainer="Albert Cañellas-Sole <albert.canellas@bsc.es>, Roc Farriol-Duran <roc.farriol@bsc.es>" \
     container="Brewpitopes" \
     about.summary="BREWPITOPES: a pipeline to refine B-cell epitope predictions during public health emergencies" \
     about.home="https://github.com/rocfd/brewpitopes/tree/dockerized" \
     software.version="1.0"
 
+################## INSTALLATION ######################
 
 # Update to latest packages and install python=3.7
 RUN apt update && apt upgrade -y && \
