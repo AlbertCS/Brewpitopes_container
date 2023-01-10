@@ -17,7 +17,7 @@ RUN apt update && apt upgrade -y && \
     apt install software-properties-common -y && \
     add-apt-repository ppa:deadsnakes/ppa -y && \
     apt update && \
-    apt install python3.7 python3-pip git python-is-python3 wget libblas-dev liblapack-dev gfortran curl libcurl4-openssl-dev libxml2-dev -y
+    apt install python3.7 python3-pip git python-is-python3 vim wget libblas-dev liblapack-dev gfortran curl libcurl4-openssl-dev libxml2-dev -y
 
 # Install R 4.2.1
 ARG DEBIAN_FRONTEND=noninteractive
@@ -49,7 +49,7 @@ RUN R -e "library(ggplot2)"
 RUN R -e "library(ggthemr)"
 RUN R -e "library(argparser)"
 
-# Install dependencies, not needed : csv, sys, os, pathlib
+# Install dependencies
 RUN pip install more-itertools pandas
 
 # Working directory
